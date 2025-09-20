@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Game 💖</title>
+  <style>
+    body {
+      background: pink;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+    }
+    .heart {
+      font-size: 40px;
+      cursor: pointer;
+      position: absolute;
+      transition: transform 0.3s;
+    }
+    .heart:hover {
+      transform: scale(1.3);
+    }
+    #message {
+      font-size: 28px;
+      color: darkred;
+      position: absolute;
+      bottom: 30px;
+      display: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div id="message">💖 I Love You, Anhad 💖</div>
+
+<script>
+  const words = ["I", "Love", "You,", "Anhad"];
+  let clicked = 0;
+
+  // Create hearts
+  for (let i = 0; i < words.length; i++) {
+    let heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.textContent = "❤️";
+    heart.style.top = Math.random() * 80 + "vh";
+    heart.style.left = Math.random() * 80 + "vw";
+
+    heart.addEventListener("click", () => {
+      heart.textContent = words[i];
+      heart.style.pointerEvents = "none";
+      clicked++;
+      if (clicked === words.length) {
+        document.getElementById("message").style.display = "block";
+      }
+    });
+
+    document.body.appendChild(heart);
+  }
+</script>
+
+</body>
+</html>
